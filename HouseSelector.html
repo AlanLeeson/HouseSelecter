@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8"/>
+	<title>Project 1</title>
+	
+	<style>
+		img{
+			
+		}
+	
+		h1{
+			font-size:40px;
+			font-family:'Georgia';
+			color:#779ECB;
+			margin-bottom:50px;
+		}
+		h3{
+			font-size:20px;
+			font-family:'Georgia';
+			color:#779ECB;
+			margin:10px 20px 50px;
+		}
+		p{
+			font-size:16px;
+			font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+		}
+		input{
+			font-size:16px;
+			font-family:'Georgia';
+		}
+		select{
+			margin:0px 10px 20px;
+			background:transparent;
+			border:1px solid #ccc;
+			padding:5px;
+			font-size:14px;
+			font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+			min-width:80px;
+			background-color:#ddd;
+		}
+		#selectors{
+			position:relative;
+			margin:10px;
+			width:100px;
+			float:left;
+		}
+		#imageContainer{
+			position:relative;
+			width:300px;
+			min-height:300px;
+			background-color:#779ECB;
+			float:right;
+		}
+		#textContainer{
+			position:relative;
+			width:300px;
+			min-height:300px;
+			background-color:#EAF5F8;
+			float:right;
+		}
+		#bottomBar{
+			position:relative;
+			width:100%;
+			top:300px;
+			background-color:#B19CD9;
+			min-height:50px;
+			opacity:0.7;
+		}
+		#content{
+			margin:0 auto;
+			width:65%;
+			min-width:740px;
+		}
+		#formId{
+			position:absolute;
+			top:450px;
+			float:left;
+			padding:50px;
+		}
+		.formContent{
+			position:relative;
+			width:100%;
+			margin:0 0 5px;
+			height:40px;
+		}
+		.block{
+			position:relative;
+			float:left;
+			margin:0 20px 0 0;
+			width:100px;
+			height:30px;
+		}
+		
+		</style>
+	
+	<script>
+		"use strict";
+		
+		//id used to keep track of how many select tags are on screen
+		var id = 0;
+		//data sets
+		var myJSON;
+		var currentObj;
+		
+		function testBrowser(){
+			if(!document.getElementById){
+				window.location="oldBrowser.html";
+			}
+		}
+		
+		function init(){
+			document.getElementsByName('first')[0].value = window.localStorage.getItem("first");
+			document.getElementsByName('last')[0].value = window.localStorage.getItem("last");
+			document.getElementsByName('email')[0].value = window.localStorage.getItem("email");
+			testBrowser();
+			loadData();
+			//createSelectTag();
+		}
+		
+		/*onchange function for all select tags
+		 @param that - the dom element of selected tag
+		*/
+		function doSelectTag(that){
+			findObjectWithChild(myJSON,that.value);
+			for(var i = 0; i < currentObj.children.length; i++){
+				if(currentObj.children[i].text === that.value){
+					currentObj = currentObj.children[i];
+					removeSelectTags(that);
+					removeTitle();
+					if(currentObj.imgSrc !== undefined){doImages(currentObj);}
+					if(currentObj.children.length > 0){createSelectTag(currentObj);}
+					else if(currentObj.children.length == 0 && currentObj.imgSrc !== undefined){
+						createTitle();
+					}
+				}
+			}
+		}
+		
+		function removeSelectTags(that){
+			if(that.nextSibling != null){
+				removeSelectTags(that.nextSibling);
+				$('selectors').removeChild(that.nextSibling);
+				$('imageContainer').removeChild($('imageContainer').lastChild);
+				id--;
+			}
+			
+			if($('imageContainer').childNodes.length > 0 && $('imageContainer').childNodes[id]){
+				$('imageContainer').removeChild($('imageContainer').childNodes[id]);
+			}
+
+		}
+		
+		function createSelectTag(obj){
+			currentObj = obj;
+		
+			id++;
+			//the select attribute
+			var selectEle = document.createElement('select');
+			selectEle.setAttribute('onchange','doSelectTag(this);'); //doesn't work in ie7 (use addEventListener)
+			selectEle.setAttribute('id',"select"+id);
+			
+			//loop through and set the options
+			for(var i = 0; i < currentObj.children.length; i++){
+				var optionEle = createOption(currentObj.children[i].text);
+				selectEle.appendChild(optionEle);
+			}
+
+			$('selectors').appendChild(selectEle);
+		}
+		
+		function createOption(value){
+			var optionEle1 = document.createElement('option');
+			optionEle1.setAttribute('value',value)
+			optionEle1.appendChild(document.createTextNode(value));
+			return optionEle1;
+		}
+		
+		//function handles writing text to screen
+		function createTitle(){
+			var h1Ele = document.createElement('h1');
+			h1Ele.appendChild(document.createTextNode(currentObj.title));
+			h1Ele.style.textAlign = 'center';
+			h1Ele.style.opacity = '0.0';
+			$('textContainer').appendChild(h1Ele);
+			
+			var h3Ele = document.createElement('h3');
+			h3Ele.appendChild(document.createTextNode("Like your choice? Fill out the form bellow to apply for your new house!"));
+			h3Ele.style.opacity = '0.0';
+			$('textContainer').appendChild(h3Ele);
+			
+			printTitle(h1Ele);
+			printTitle(h3Ele);
+		}
+		//fades text into view
+		function printTitle(dom){
+			if(dom.style.opacity < 1){
+				dom.style.opacity = parseFloat(dom.style.opacity) + 0.01 + "";
+				setTimeout(function(){printTitle(dom);},1);
+			}
+		}
+		
+		//removes the titles
+		function removeTitle(){
+			if($('textContainer').childNodes.length > 0){
+				var num = $('textContainer').childNodes.length;
+				for(var i = 0; i < num; i++){
+					$('textContainer').removeChild($('textContainer').lastChild);
+				}
+			}
+		}
+		
+		//functions that handle images
+		function doImages(obj){
+			var imageEle = document.createElement('img');
+			imageEle.setAttribute('src',obj.imgSrc);
+			imageEle.setAttribute('width',obj.width);
+			imageEle.setAttribute('height',obj.height);
+			imageEle.setAttribute('name','images');
+			imageEle.setAttribute('alt','IMAGE');
+			imageEle.style.right = obj.right;
+			imageEle.style.top = obj.top;
+			imageEle.style.opacity = "0.0";
+			imageEle.style.position = 'absolute';
+			$('imageContainer').appendChild(imageEle);
+			slide(imageEle,parseInt(obj.slideStop));
+		}
+		
+		function slide(dom,num){
+			if(parseInt(dom.style.right) >= num){
+				resetAttributes(dom);
+			}
+			if(parseInt(dom.style.right) < num){
+				dom.style.right=parseInt(dom.style.right) + 3 + "px";
+				dom.style.opacity = parseFloat(dom.style.opacity) + 0.01 + "";
+				setTimeout(function(){slide(dom,num);},1);//use a function wrapper
+			}
+		}
+		
+		function resetAttributes(dom){
+			dom.style.position = 'relative';
+			dom.style.top = "0px";
+			dom.style.left = "0px";
+			dom.style.right = "0px";
+			dom.style.opacity = '1';
+			dom.style.float = 'left';
+		}
+		
+		function findObjectWithChild(obj,value){
+			if(obj.children !== undefined && obj !== undefined){
+				for(var i = 0; i < obj.children.length; i++){
+					if(obj.children[i].text === value){
+						currentObj = obj;
+						return;
+					}else{
+						findObjectWithChild(obj.children[i],value);
+					}//end of else
+				}//end of for
+			}//end of if
+		}
+		
+		//utilities
+		function $(id){
+			return document.getElementById(id);
+		}
+	
+		function $$(tag,index){
+			return document.getElementsByTagName(tag)[index];
+		}
+		
+		function loadData(){
+			var xhr = new XMLHttpRequest();
+			xhr.onload = function(){
+				// JSON.parse() converts a string to JSON.
+ 				// myJSON = JSON.parse( xhr.responseText );
+ 				
+ 				myJSON = eval('(' + xhr.responseText + ')');
+ 				
+ 				saveGlobalJSON(myJSON);
+ 				
+ 				createSelectTag(myJSON);
+
+			}
+			var url = "elements.json";
+			xhr.open('GET',url,true);
+			// try to prevent browser caching by sending a header to the server
+			xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2010 00:00:00 GMT");
+			xhr.send();
+		}
+		
+		function saveGlobalJSON(obj){
+			myJSON = obj;
+		}
+		
+		function validateForm(form){
+			console.log("validate");
+			var first = form["first"].value;
+			var last = form["last"].value;
+			var email = form["email"].value;
+			var error= false;
+			if(first == null || first == "" || 
+				last == null || last == ""){
+				document.getElementsByName('nameText')[0].style.color = "#ff0000";
+				error = true;
+			}
+			if(email == null || email == ""){
+				document.getElementsByName('emailText')[0].style.color = "#ff0000";
+				error = true;
+			}
+			if(error){
+				return false;
+			}else{
+				window.localStorage.setItem("first",first);
+				window.localStorage.setItem("last",last);
+				window.localStorage.setItem("email",email);
+			}
+		}
+		
+	</script>
+	
+</head>
+
+<body onload="init();">
+
+	<div id="content">
+		<h1>Find Your Ideal House!</h1>
+	
+		<div id="selectors">
+		</div>
+		<div id="imageContainer">
+		</div>
+		<div id="textContainer">
+		</div>
+		<div id="bottomBar">
+		</div>
+		<div>
+		<div id="formId">
+		<form method="get" action="redirect.html" onsubmit="return validateForm(this)">
+			<div class="formContent">
+				<p name="nameText" class="block">Name*</p>
+				<p name="emailText" style="margin-left:250px">Email*</p>
+			</div>
+			<div class="formContent">
+				<input class="block" type="text" name="first"/>
+				<input class="block" type="text" name="last"/>	
+				<input class="block" style="width:200px" type="text" name="email"/>	
+				<input class="block" style="margin:5px 0 0 0;" type="submit" value="Submit"/>
+			</div>
+			<div class="formContent">
+				<p class="block">First</p>
+				<p class="block">Last</p>
+			</div>
+	
+		</form>
+		</div>
+	</div>
+	
+</body>
+
+</html>

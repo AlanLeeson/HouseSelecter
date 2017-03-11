@@ -1,0 +1,63 @@
+{"choices":"3","children":[
+	{"text":"Storie(s)","level":"1","children":[]},
+	{"text":"One","level":"2","top":"0px","right":"-200px","slideStop":"0","imgSrc":"./images/1Story.jpg","width":"300","height":"200","children":[
+		{"text":"Location","children":[]},
+		{"text":"Tropics","top":"200px","right":"-200px","slideStop":"150","imgSrc":"./images/tropics.jpg","width":"150","height":"100","children":[
+			{"text":"Entrance","children":[]},
+			{"text":"Spiral Stairs","title":"Tree-House on a Spring","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/spiral.jpg","width":"150","height":"100","children":[]},
+			{"text":"Rope Ladder","title":"Climb into Serenity","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/ropeLadder.jpg","width":"150","height":"100","children":[]},
+			{"text":"Vines","title":"Live the Monkey Life","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/vines.jpg","width":"150","height":"100","children":[]}
+		]},
+		{"text":"Desert","top":"200px","right":"-200px","slideStop":"150","imgSrc":"./images/desert.jpg","width":"150","height":"100","children":[
+			{"text":"Water Source","children":[]},
+			{"text":"Well","top":"200px","title":"Enjoy the Hot Sun","right":"-200px","slideStop":"0","imgSrc":"./images/well.jpg","width":"150","height":"100","children":[]},
+			{"text":"Rain-Catcher","title":"We Hope You Make it","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/rainCatcher.jpg","width":"150","height":"100","children":[]},
+			{"text":"Self-Supply","title":"It'll Last as Long as You","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/selfSupply.jpg","width":"150","height":"100","children":[]}
+		]},
+		{"text":"City","top":"200px","right":"-200px","slideStop":"150","imgSrc":"./images/city.jpg","width":"150","height":"100","children":[
+			{"text":"Security","children":[]},
+			{"text":"20 Bolt-Locks","title":"Safest House in The City","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/bolts.jpg","width":"150","height":"100","children":[]},
+			{"text":"Electric Fence","title":"Not Meant For the Dog","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/fence.jpg","width":"150","height":"100","children":[]},
+			{"text":"Surveillance","title":"Small Home, Big Security","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/surveillance.jpg","width":"150","height":"100","children":[]}
+		]},
+	]},
+	{"text":"Two","level":"2","top":"0px","right":"-200px","slideStop":"0","imgSrc":"./images/2Stories.jpg","width":"300","height":"200","children":[
+		{"text":"Interior Design","children":[]},
+		{"text":"Modern","top":"200px","right":"-200px","slideStop":"150","imgSrc":"./images/modern.jpg","width":"150","height":"100","children":[
+			{"text":"Spare Room","children":[]},
+			{"text":"Studio Spa","title":"Manicures at Home!","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/spa.jpg","width":"150","height":"100","children":[]},
+			{"text":"Theatre","title":"Best Upscale Sports Bar","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/theatre.jpg","width":"150","height":"100","children":[]},
+			{"text":"Game Room","title":"Magnificent Multimedia","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/gameRoom.jpg","width":"150","height":"100","children":[]}
+		]},
+		{"text":"Victorian","top":"200px","right":"-200px","slideStop":"150","imgSrc":"./images/victorian.jpg","width":"150","height":"100","children":[
+			{"text":"Garden","children":[]},
+			{"text":"Rose Archway","title":"Quaint Home For Two","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/roseArchway.jpg","width":"150","height":"100","children":[]},
+			{"text":"Small Brook","title":"Great Backyard Irrigation","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/smallBrook.jpg","width":"150","height":"100","children":[]},
+			{"text":"Maze","title":"A Place to Walk Out the Stress","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/hedgeMaze.jpg","width":"150","height":"100","children":[]}
+		]},
+		{"text":"Stone","top":"200px","right":"-200px","slideStop":"150","imgSrc":"./images/stone.jpg","width":"150","height":"100","children":[
+			{"text":"Heat Source","children":[]},
+			{"text":"Hearth","title":"Stone's Cold, Hearth's Snug","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/hearth.jpg","width":"150","height":"100","children":[]},
+			{"text":"Wood Fire","title":"Nice and Cozy","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/fire.jpg","width":"150","height":"100","children":[]},
+			{"text":"Electric Heater","title":"Invest in a Gas Heating","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/electricHeater.jpg","width":"150","height":"100","children":[]}
+		]}
+	]},
+	{"text":"Three","level":"2","top":"0px","right":"-200px","slideStop":"0","imgSrc":"./images/3Stories.jpg","width":"300","height":"200","children":[
+		{"text":"Backyard","children":[]},
+		{"text":"Pool","top":"200px","right":"-200px","slideStop":"150","imgSrc":"./images/pool.jpg","width":"150","height":"100","children":[
+			{"text":"Features","children":[]},
+			{"text":"Jets","title":"Bubbly Pool to Soak in","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/jets.jpg","width":"150","height":"100","children":[]},
+			{"text":"Waves","title":"Luxurious House and Amenities ","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/waves.jpg","width":"150","height":"100","children":[]}
+		]},
+		{"text":"Beach","top":"200px","right":"-200px","slideStop":"150","imgSrc":"./images/beach.jpg","width":"150","height":"100","children":[
+			{"text":"Access","children":[]},
+			{"text":"Public","title":"No Neighbor is a Stranger","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/public.jpg","width":"150","height":"100","children":[]},
+			{"text":"Private","title":"Vacation Home for the Work Week","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/private.jpg","width":"150","height":"100","children":[]}
+		]},
+		{"text":"Graveyard","top":"200px","right":"-200px","slideStop":"150","imgSrc":"./images/graveyard.jpg","width":"150","height":"100","children":[
+			{"text":"Atmosphere","children":[]},
+			{"text":"Spooky","title":"Just Don't Go Out at Night","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/spooky.jpg","width":"150","height":"100","children":[]},
+			{"text":"Sunny","title":"Peaceful and Thought Provoking","top":"200px","right":"-200px","slideStop":"0","imgSrc":"./images/sunny.jpg","width":"150","height":"100","children":[]},
+		]}
+	]},
+]}
